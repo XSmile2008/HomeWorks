@@ -1,15 +1,22 @@
 package com.vstarikov.homeworks;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    String[] strings = {"nyan","punyan"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +33,21 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        List<Button> buttons = new ArrayList<>();
+        Button button = new Button(this);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), GameActivity.class));
+            }
+        });
+        buttons.add(button);
+
+        ListView listView = (ListView) findViewById(R.id.listView);
+        //ArrayAdapter<Button> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, buttons);
+        HomeworksAdapter homeworksAdapter = new HomeworksAdapter(this, buttons);
+        listView.setAdapter(homeworksAdapter);
     }
 
     @Override
