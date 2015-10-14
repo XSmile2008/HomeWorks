@@ -39,12 +39,6 @@ public class HomeworksAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        /*list.get(position).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context, "nyan", Toast.LENGTH_SHORT).show();
-            }
-        });*/
         return list.get(position);
     }
 }
