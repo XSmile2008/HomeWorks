@@ -10,10 +10,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.vstarikov.homeworks.first.GameActivity;
+import com.vstarikov.homeworks.second.SecondActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,21 +50,15 @@ public class MainActivity extends AppCompatActivity {
         button.setWidth(500);
         buttons.add(button);
 
-        LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT, 1.0f);
-
         button = new Button(this);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), GameActivity.class));
+                startActivity(new Intent(getApplicationContext(), SecondActivity.class));
             }
         });
         button.setText("2-nd homework");
-        button.setLayoutParams(param
-        );
-        //button.setWidth(500);
+        button.setWidth(500);
         buttons.add(button);
 
         ListView listView = (ListView) findViewById(R.id.listView);

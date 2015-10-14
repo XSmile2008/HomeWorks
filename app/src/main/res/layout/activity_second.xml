@@ -8,11 +8,13 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/editText" />
+        android:textSize="24pt"
+        android:id="@+id/editTextN" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:text="Fibonacci"
         android:id="@+id/buttonFibonacci"/>
 
@@ -29,4 +31,5 @@
         android:text="test"
         android:textAlignment="center"
         android:id="@+id/textViewAnswer"/>
+
 </LinearLayout>
