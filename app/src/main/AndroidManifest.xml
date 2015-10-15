@@ -13,13 +13,12 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
+                <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".first.GameActivity"/>
-        <activity android:name=".second.SecondActivity"/>
+        <activity android:name=".first.GameActivity" android:label="1-st homework"/>
+        <activity android:name=".second.SecondActivity" android:label="2-nd homework"/>
     </application>
 
 </manifest>

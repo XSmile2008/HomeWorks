@@ -1,5 +1,6 @@
 package com.vstarikov.homeworks;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -19,7 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    String[] strings = {"nyan","punyan"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,37 +32,16 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "GeekHub!", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
 
-        //LayoP
-        List<Button> buttons = new ArrayList<>();
-        Button button = new Button(this);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), GameActivity.class));
-            }
-        });
-        button.setText("1-st homework");
-        button.setWidth(500);
-        buttons.add(button);
-
-        button = new Button(this);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), SecondActivity.class));
-            }
-        });
-        button.setText("2-nd homework");
-        button.setWidth(500);
-        buttons.add(button);
-
+        List<Class> activities = new ArrayList<>();
+        activities.add(GameActivity.class);
+        activities.add(SecondActivity.class);
+        HomeworksAdapter homeworksAdapter = new HomeworksAdapter(this, activities);
         ListView listView = (ListView) findViewById(R.id.listView);
-        HomeworksAdapter homeworksAdapter = new HomeworksAdapter(this, buttons);
         listView.setAdapter(homeworksAdapter);
     }
 
@@ -81,8 +60,8 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.action_exit) {
+            System.exit(1);//TODO: make correct exit
         }
 
         return super.onOptionsItemSelected(item);
