@@ -19,6 +19,7 @@
         </activity>
         <activity android:name=".first.GameActivity" android:label="1-st homework"/>
         <activity android:name=".second.SecondActivity" android:label="2-nd homework"/>
+        <activity android:name=".third.ThirdActivity" android:label="3-rd homework"/>
     </application>
 
 </manifest>

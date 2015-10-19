@@ -15,6 +15,7 @@ import android.widget.ListView;
 
 import com.vstarikov.homeworks.first.GameActivity;
 import com.vstarikov.homeworks.second.SecondActivity;
+import com.vstarikov.homeworks.third.ThirdActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         List<Class> activities = new ArrayList<>();
         activities.add(GameActivity.class);
         activities.add(SecondActivity.class);
+        activities.add(ThirdActivity.class);
         HomeworksAdapter homeworksAdapter = new HomeworksAdapter(this, activities);
         ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(homeworksAdapter);
