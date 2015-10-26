@@ -12,14 +12,14 @@ import com.vstarikov.homeworks.R;
 /**
  * Created by Starikov on 10.10.15.
  */
-public class GameActivity extends AppCompatActivity {
+public class FirstActivity extends AppCompatActivity {
 
     private SurfaceView surfaceView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_game);
+        setContentView(R.layout.activity_first);
 
         Button buttonUp = (Button) findViewById(R.id.buttonUp);
         buttonUp.setOnClickListener(new View.OnClickListener() {

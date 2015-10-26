@@ -1,7 +1,5 @@
 package com.vstarikov.homeworks;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,10 +8,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ListView;
 
-import com.vstarikov.homeworks.first.GameActivity;
+import com.vstarikov.homeworks.first.FirstActivity;
+import com.vstarikov.homeworks.fourth.FourthActivity;
 import com.vstarikov.homeworks.second.SecondActivity;
 import com.vstarikov.homeworks.third.ThirdActivity;
 
@@ -39,9 +37,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         List<Class> activities = new ArrayList<>();
-        activities.add(GameActivity.class);
+        activities.add(FirstActivity.class);
         activities.add(SecondActivity.class);
         activities.add(ThirdActivity.class);
+        activities.add(FourthActivity.class);
         HomeworksAdapter homeworksAdapter = new HomeworksAdapter(this, activities);
         ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(homeworksAdapter);
