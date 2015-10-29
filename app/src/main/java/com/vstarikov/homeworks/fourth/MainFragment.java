@@ -20,7 +20,11 @@ public class MainFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        selectorInterface = (SelectorInterface) context;
+        try {
+            selectorInterface = (SelectorInterface) context;
+        } catch (ClassCastException e) {
+            e.printStackTrace();
+        }
     }
 
     @Nullable
