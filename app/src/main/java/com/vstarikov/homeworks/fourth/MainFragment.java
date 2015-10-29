@@ -15,12 +15,12 @@ import com.vstarikov.homeworks.R;
  */
 public class MainFragment extends Fragment {
 
-    BaseInterface baseInterface;
+    SelectorInterface selectorInterface;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        baseInterface = (BaseInterface) context;
+        selectorInterface = (SelectorInterface) context;
     }
 
     @Nullable
@@ -35,14 +35,14 @@ public class MainFragment extends Fragment {
         view.findViewById(R.id.buttonNext).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                baseInterface.next();
+                selectorInterface.next();
             }
         });
 
         view.findViewById(R.id.buttonPrevious).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                baseInterface.previous();
+                selectorInterface.previous();
             }
         });
     }

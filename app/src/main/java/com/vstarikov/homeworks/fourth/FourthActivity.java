@@ -9,10 +9,10 @@ import com.vstarikov.homeworks.R;
 /**
  * Created by Starikov on 26.10.15.
  * У нас є актівіті яка наслідує BaseActivity і всередині неї в на крутяться фрагменти,
- * які можуть викликати методи інтерфейсу BaseInterface next() і previous(),
+ * які можуть викликати методи інтерфейсу SelectorInterface next() і previous(),
  * кнопками які знаходяться на цих фрагментах переходячи на інші фпвнменти
  */
-public class FourthActivity extends BaseActivity implements BaseInterface{
+public class FourthActivity extends BaseActivity implements SelectorInterface {
 
     @Override
     boolean isAddFragment() {
