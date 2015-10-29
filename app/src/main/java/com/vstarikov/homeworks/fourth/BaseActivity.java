@@ -12,12 +12,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //if (savedInstanceState == null) {
             if (isAddFragment()) {
                 setContentView(R.layout.activity_base);
                 if (savedInstanceState == null) addFragment();
             } else setContentView(R.layout.activity_fourth);
-        //}
     }
 
     abstract boolean isAddFragment();
