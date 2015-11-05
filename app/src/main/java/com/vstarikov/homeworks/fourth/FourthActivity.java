@@ -22,7 +22,7 @@ public class FourthActivity extends BaseActivity implements SelectorInterface {
     @Override
     void addFragment() {
         FragmentManager manager = getSupportFragmentManager();
-        manager.beginTransaction().add(R.id.fragmentContainer, new MainFragment()).commit();
+        manager.beginTransaction().add(R.id.fragmentContainer, new FirstFragment()).commit();
     }
 
     @Override

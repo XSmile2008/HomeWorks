@@ -2,4 +2,6 @@
     <string name="app_name">HomeWorks</string>
     <string name="action_settings">Settings</string>
     <string name="itemExit">Exit</string>
+    <string name="toggle_close_drawer">Close drawer</string>
+    <string name="toggle_open_drawer">Open drawer</string>
 </resources>

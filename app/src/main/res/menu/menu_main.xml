@@ -1,6 +1,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+    <item android:id="@+id/action_item1" android:title="item 1"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_item2" android:title="item 2"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_item3" android:title="item 3"
+        android:orderInCategory="100" app:showAsAction="never" />
     <item android:id="@+id/action_exit" android:title="@string/itemExit"
         android:orderInCategory="100" app:showAsAction="always" />
 </menu>
