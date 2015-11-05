@@ -1,5 +1,6 @@
 package com.vstarikov.homeworks;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,15 +9,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.vstarikov.homeworks.fifth.FifthActivity;
 import com.vstarikov.homeworks.first.FirstActivity;
 import com.vstarikov.homeworks.fourth.FourthActivity;
 import com.vstarikov.homeworks.second.SecondActivity;
 import com.vstarikov.homeworks.third.ThirdActivity;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,14 +36,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        List<Class> activities = new ArrayList<>();
-        activities.add(FirstActivity.class);
-        activities.add(SecondActivity.class);
-        activities.add(ThirdActivity.class);
-        activities.add(FourthActivity.class);
-        HomeworksAdapter homeworksAdapter = new HomeworksAdapter(this, activities);
+        final HomeworksAdapter<Class> adapter = new HomeworksAdapter<Class>(this, android.R.layout.simple_list_item_1);
+        adapter.add(FirstActivity.class);
+        adapter.add(SecondActivity.class);
+        adapter.add(ThirdActivity.class);
+        adapter.add(FourthActivity.class);
+        adapter.add(FifthActivity.class);
         ListView listView = (ListView) findViewById(R.id.listView);
-        listView.setAdapter(homeworksAdapter);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                startActivity(new Intent(getApplicationContext(), (Class<?>) adapter.getItem(position)));
+            }
+        });
     }
 
     @Override

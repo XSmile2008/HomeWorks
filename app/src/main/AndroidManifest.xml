@@ -21,6 +21,7 @@
         <activity android:name=".second.SecondActivity" android:label="2-nd homework"/>
         <activity android:name=".third.ThirdActivity" android:label="3-rd homework"/>
         <activity android:name=".fourth.FourthActivity" android:label="4-th homework"/>
+        <activity android:name=".fifth.FifthActivity" android:label="5-th homework"/>
     </application>
 
 </manifest>

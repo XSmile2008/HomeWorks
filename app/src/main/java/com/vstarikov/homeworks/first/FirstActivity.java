@@ -53,10 +53,5 @@ public class FirstActivity extends AppCompatActivity {
             }
         });
 
-        /*surfaceView = (SurfaceView) findViewById(R.id.surfaceView);
-        Bitmap bitmap = Bitmap.createBitmap(240, 240, Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bitmap);
-        canvas.clipRect(new Rect(20, 20, 100, 100));
-        surfaceView.draw(canvas);*/
     }
 }
