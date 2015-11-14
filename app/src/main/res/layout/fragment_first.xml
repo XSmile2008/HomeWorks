@@ -17,4 +17,5 @@
         android:text="Next"
         android:id="@+id/buttonNext"
         android:layout_weight="1" />
+
 </LinearLayout>
