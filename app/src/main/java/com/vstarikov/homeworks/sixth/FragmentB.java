@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.vstarikov.homeworks.R;
 
@@ -14,6 +15,8 @@ import com.vstarikov.homeworks.R;
  * Created by vladstarikov on 15.11.15.
  */
 public class FragmentB extends Fragment {
+
+    TextView textView;
 
     @Override
     public void onAttach(Context context) {
@@ -29,5 +32,11 @@ public class FragmentB extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        textView = (TextView) view.findViewById(R.id.textView);
+        update(getArguments().getInt("key"));
+    }
+
+    public void update(int key) {
+        textView.setText("You was selected" + key + "item");
     }
 }

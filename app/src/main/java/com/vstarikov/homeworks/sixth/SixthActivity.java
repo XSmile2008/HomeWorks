@@ -1,42 +1,46 @@
 package com.vstarikov.homeworks.sixth;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.os.PersistableBundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
 
 import com.vstarikov.homeworks.R;
 
 /**
  * Created by vladstarikov on 14.11.15.
  */
-public class SixthActivity extends AppCompatActivity implements MyManager{
+public class SixthActivity extends AppCompatActivity implements Selector {
 
-    FrameLayout containerA;
-    FrameLayout containerB;
+    FragmentA fragmentA;
+    FragmentB fragmentB;
+
+    int key;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sixth);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        containerA = (FrameLayout) findViewById(R.id.containerA);
-        containerB = (FrameLayout) findViewById(R.id.containerB);
+        //if (savedInstanceState != null) key = savedInstanceState.getInt("key") ;//TODO
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-
-        Fragment fragmentA = new FragmentA();
+        fragmentA = new FragmentA();
         fragmentManager.beginTransaction().add(R.id.containerA, fragmentA).commit();
-        if (containerB != null) {
-            Fragment fragmentB = new FragmentB();
+        if (findViewById(R.id.containerB) != null) {
+            Bundle bundle = new Bundle();
+            bundle.putInt("key", key);
+            fragmentB = new FragmentB();
+            fragmentB.setArguments(bundle);
             fragmentManager.beginTransaction().add(R.id.containerB, fragmentB).commit();
         }
     }
@@ -52,7 +56,22 @@ public class SixthActivity extends AppCompatActivity implements MyManager{
     }
 
     @Override
-    public void update(int data) {
+    public void select(int key) {
+        if (findViewById(R.id.containerB) != null) {
+            ((FragmentB)getSupportFragmentManager().getFragments().get(1)).update(key);
+            Log.i("nyan", "nyan");
+        } else {
+            Bundle bundle = new Bundle();
+            bundle.putInt("key", key);
+            fragmentB = new FragmentB();
+            fragmentB.setArguments(bundle);
+            getSupportFragmentManager().beginTransaction().replace(R.id.containerA, fragmentB).addToBackStack("nyan").commit();
+        }
+    }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+        outState.putInt("key", key);//TODO
     }
 }

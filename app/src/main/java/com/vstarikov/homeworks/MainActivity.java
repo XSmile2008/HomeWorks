@@ -19,6 +19,7 @@ import com.vstarikov.homeworks.fifth.FifthActivity;
 import com.vstarikov.homeworks.first.FirstActivity;
 import com.vstarikov.homeworks.fourth.FourthActivity;
 import com.vstarikov.homeworks.second.SecondActivity;
+import com.vstarikov.homeworks.sixth.SixthActivity;
 import com.vstarikov.homeworks.third.ThirdActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.add(ThirdActivity.class);
         adapter.add(FourthActivity.class);
         adapter.add(FifthActivity.class);
+        adapter.add(SixthActivity.class);
         ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
