@@ -1,11 +1,10 @@
 package com.vstarikov.homeworks.sixth;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 
 import com.vstarikov.homeworks.R;
@@ -15,10 +14,8 @@ import com.vstarikov.homeworks.R;
  */
 public class SixthActivity extends AppCompatActivity implements Selector {
 
-    FragmentA fragmentA;
-    FragmentB fragmentB;
-
     int key;
+    boolean fragmentBCreated = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,17 +28,25 @@ public class SixthActivity extends AppCompatActivity implements Selector {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        //if (savedInstanceState != null) key = savedInstanceState.getInt("key") ;//TODO
-
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentA = new FragmentA();
-        fragmentManager.beginTransaction().add(R.id.containerA, fragmentA).commit();
+        if (savedInstanceState == null) {
+            FragmentA fragmentA = new FragmentA();
+            fragmentManager.beginTransaction().add(R.id.containerA, fragmentA).commit();
+        } else {
+            this.key = savedInstanceState.getInt("key");
+            this.fragmentBCreated = savedInstanceState.getBoolean("fragmentB");
+        }
+
         if (findViewById(R.id.containerB) != null) {
-            Bundle bundle = new Bundle();
-            bundle.putInt("key", key);
-            fragmentB = new FragmentB();
-            fragmentB.setArguments(bundle);
-            fragmentManager.beginTransaction().add(R.id.containerB, fragmentB).commit();
+            if (fragmentManager.getBackStackEntryCount() > 0) fragmentManager.popBackStack();
+            if (!fragmentBCreated) {//if we rotate from phone mode or start Activity for first time
+                Bundle bundle = new Bundle();
+                bundle.putInt("key", key);
+                FragmentB fragmentB = new FragmentB();
+                fragmentB.setArguments(bundle);
+                fragmentManager.beginTransaction().add(R.id.containerB, fragmentB).commit();
+                fragmentBCreated = true;
+            }
         }
     }
 
@@ -57,21 +62,29 @@ public class SixthActivity extends AppCompatActivity implements Selector {
 
     @Override
     public void select(int key) {
+        this.key = key;
         if (findViewById(R.id.containerB) != null) {
-            ((FragmentB)getSupportFragmentManager().getFragments().get(1)).update(key);
-            Log.i("nyan", "nyan");
+            ((FragmentB) getSupportFragmentManager().getFragments().get(1)).update(key);
         } else {
             Bundle bundle = new Bundle();
             bundle.putInt("key", key);
-            fragmentB = new FragmentB();
+            FragmentB fragmentB = new FragmentB();
             fragmentB.setArguments(bundle);
             getSupportFragmentManager().beginTransaction().replace(R.id.containerA, fragmentB).addToBackStack("nyan").commit();
         }
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-        super.onSaveInstanceState(outState, outPersistentState);
-        outState.putInt("key", key);//TODO
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        onSaveInstanceState(new Bundle());
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putInt("key", key);
+        outState.putBoolean("fragmentB", fragmentBCreated);
+        super.onSaveInstanceState(outState);
+    }
+
 }
